@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!---------------------------------- ENLACES BOOTSTRAP ----------------------------->
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+ <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+ <!---------------------------------- TERMINAN ENLACES BOOTSTRAP ----------------------------->
+  
+  <link rel="stylesheet" href="./assets/css/styleCrud.css">
+  <title>CRUD</title>
+</head>
+<body>
+    <!-- -------------------- BARRA DE NAVEGACIÓN -------------------- -->
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #133133;">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html"> <img src="./assets/img/icons/Logo-Ramaka.jpeg" alt=""
+                style="height: 45px; width: 60px;" class="d-inline-block align-text-top imagen-navbar"></a>
+
+            <!-- BOTÓN PARA CUANDO SE HACE RESPONSIVA LA PÁGINA -->
+            <button class="btn navbar-toggler btn-nav-pie" type="button" data-toggle="collapse"
+                data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="true"
+                aria-label="Toggle navigation" >
+                <img src="./assets/img/icons/menu.png" alt="menuResponsive" width="20px" height="20px">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarScroll">
+
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-pie" href="./tienda.html">Tienda</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn-nav-pie" href="./tips.html" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Tips
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./tips.html">Datos Curiosos</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./tips.html#subTipos">Tipos de Madera</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./tips.html#subHacer">Hágalo usted mismo</a></li>
+                            <li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-pie" href="./contacto.html">Contacto</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-pie" href="./nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn-nav-pie" href="./galeria.html" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Galeria
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./galeria.html">Salas</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./galeria.html#galeriaH2-cocinas">Cocina</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./galeria.html#galeriaH2-closets">Closets</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./galeria.html#galeriaH2-comedores">Comedor</a></li>
+                            <li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-pie" href="./inicioSesion.html">Mi cuenta</a>
+                    </li>
+
+                </ul>
+
+             <!-- ---------- BOTÓN CARRITO ---------- -->
+
+            
+                <div class="cart">
+                    <a href="carrito.html">
+                    <i class="bi bi-cart3"></i>
+                    <div id="cartAmount" class="cartAmount">0</div>
+                    </a>
+                </div>
+    
+            </div>
+        </div>
+     </nav>
+
+ <!-- ---------- TERMINA BOTÓN CARRITO ---------- -->
+
+    <!-- CONTENIDO DEL CRUD -->
+
+    <div class="container" id="crud" style="background-color: rgba(185, 163, 138, 0.75);">
+
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="color nav-link active fuente-titulo" data-toggle="tab" href=#list role="tab" aria-controls="form" aria-selected="true">Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="color nav-link fuente-titulo" data-toggle="tab" href=#form role="tab" aria-controls="form" aria-selected="true">Cotizaciones</a>
+        </li>
+      
+        <li class="nav-item">
+            <a class="color nav-link fuente-titulo" data-toggle="tab" href=#hola role="tab" aria-controls="form" aria-selected="true" >Inventario</a>
+        </li>
+    </ul>
+
+    <!-- ID, estatus, nu_ratreo, fecha_compra, tipo_envio, notas -->
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active table-responsive" id="list" role="tabpanel" aria-labelledby="list-tab">
+        <table id="contenido" class="table">
+          <button class="botton_crud float-right" style="padding: 10px; margin: 15px; border-radius: 5%; background-color: #b9a38a; width: 200px;">Guardar Cambios</button>
+          <thead id="encabezados">
+                  <tr>
+                    <th scope="col" class="fuente-texto">ID</th>
+                    <th scope="col" class="fuente-texto">Nombre</th>
+                    <th scope="col" class="fuente-texto">Fecha de Compra</th>
+                    <th scope="col" class="fuente-texto">Tipo de Envio</th>
+                    <th scope="col" class="fuente-texto">Productos</th>
+                    <th scope="col" class="fuente-texto">Dirección</th>
+                    <th scope="col" class="fuente-texto">Notas</th>
+                    <th scope="col" class="fuente-texto">No. Rastreo</th>
+                    <th scope="col" class="fuente-texto">Estatus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="color" class="fuente-texto">
+                    <th scope="row">1</th>
+                    
+                    <td>Mark Smith</td>
+                    <td>2022-06-25</td>
+                    <td>Estándar</td>
+                    <td>Mesa de caoba</td>
+                    <td>Calle djandkjn # 88 Ciudad, Colonia</td>
+                    <td>En contraesquina a una tienda de abarrotes</td>
+                    <td>9037685742749384</td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                          <option selected >Seleccionar...</option>
+                          <option value="1" >Nuevo</option>
+                          <option value="2" >Pendiente</option>
+                          <option value="3" >Entregado</option>
+                          <option value="4" >Cancelado</option>
+                        </select>
+                    </div>
+                    </td>
+                  </tr>
+
+                  <tr id="blanco" class="fuente-texto">
+                    <th scope="row">2</th>
+                    <td>Jane Doe</td>
+                    <td>2022-08-18</td>
+                    <td>Exprés</td>
+                    <td>Mesa de caoba</td>
+                    <td>Calle blurblur # 88 Mz 2 Lt 5. Colonia whooosh. Edo Mex, Mexico 14278. </td>
+                    <td>Frente a una Farmacia Similares</td>
+                    <td>90376826663849384</td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                          <option selected >Seleccionar...</option>
+                          <option value="1" >Nuevo</option>
+                          <option value="2" >Pendiente</option>
+                          <option value="3" >Entregado</option>
+                          <option value="4" >Cancelado</option>
+                        </select>
+                    </div>
+                    </td>
+                  </tr>
+
+                  <tr id="blanco" class="fuente-texto">
+                    <th scope="row">3</th>
+                    <td>Juan Peréz</td>
+                    <td>2022-09-19</td>
+                    <td>Estándar</td>
+                    <td>Comedor de 6 sillas</td>
+                    <td>Calle Lluvia # 25 Col. Pueblo de San Andrés Totoltepec. CDMX. 14400. </td>
+                    <td>Puerta negra</td>
+                    <td>9037685742773950</td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                          <option selected >Seleccionar...</option>
+                          <option value="1" >Nuevo</option>
+                          <option value="2" >Pendiente</option>
+                          <option value="3" >Entregado</option>
+                          <option value="4" >Cancelado</option>
+                        </select>
+                    </div>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+
+        <!-- ID, fecha, descripcion -->
+        <div class="tab-pane fade fuente-texto" id="form" role="tabpanel" aria-labelledby="form-tab">
+          
+
+            <div id="contenido" class="table-responsive fuente-texto">
+
+                <table id="contenido" class="table fuente-texto">
+                  <button class="botton_crud float-right" style="padding: 10px; margin: 15px; border-radius: 5%; background-color: #b9a38a; width: 200px;">Guardar Cambios</button>  
+                    <thead id="encabezados">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Descripción del Mueble</th>
+                        <th scope="col">Estatus</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="color">
+                        <th scope="row">1</th>
+                        <td>2021-07-30</td>
+                        <td>Julio Hermosillo</td>
+                        <td>jhermosillo@gmail.com</td>
+                        <td>Venustiano Carranza, CDMX</td>
+                        <td>Mesa de caoba</td>
+                        <td>
+                          <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                              <option selected >Seleccionar...</option>
+                              <option value="1" >Nuevo</option>
+                              <option value="2" >Pendiente</option>
+                              <option value="3" >Entregado</option>
+                              <option value="4" >Finalizado</option>
+                            </select>
+                        </div>
+                          
+                        </td>
+                      </tr>
+
+                      <tr id="blanco">
+                        <th scope="row">2</th>
+                        <td>2021-07-30</td>
+                        <td>Maria Vargas</td>
+                        <td>mvargas@gmail.com</td>
+                        <td>Alvaro Obregón, CDMX</td>
+                        <td>Closet de pared</td>
+                        <td>
+                          <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                              <option selected >Seleccionar...</option>
+                              <option value="1" >Nuevo</option>
+                              <option value="2" >Pendiente</option>
+                              <option value="3" >Entregado</option>
+                              <option value="4" >Finalizado</option>
+                            </select>
+                        </div>
+                          
+                        </td>
+                      </tr>
+
+                      <tr id="blanco">
+                      <th scope="row">3</th>
+                      <td>2021-07-30</td>
+                        <td>Jonathan Ramírez</td>
+                        <td>jramirez@gmail.com</td>
+                        <td>Iztapalapa, CDMX</td>
+                        <td>Cabecera para cama queen size</td>
+                        <td>
+                          <div class="input-group mb-3">
+                              <select class="custom-select" id="inputGroupSelect01" style="width: 120px;">
+                                <option selected >Seleccionar...</option>
+                                <option value="1" >Nuevo</option>
+                                <option value="2" >Pendiente</option>
+                                <option value="3" >Entregado</option>
+                                <option value="4" >Finalizado</option>
+                              </select>
+                          </div>
+                          
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade fuente-texto" id="hola" role="tabpanel" aria-labelledby="form-tab">
+                <div id="contenido" class="table-responsive fuente-texto">
+                    <table id="contenido" class="table fuente-texto">
+                      <!-- Grupo de Botones -->
+                      <div class="btn-group float-right" role="group" aria-label="Basic example">
+                        <!-- Boton para guardar cambios -->
+                        <button class="botton_crud" style="padding: 10px; margin: 15px; border-radius: 5%; background-color: #b9a38a; width: 200px;">Guardar Cambios</button>
+                        <!-- boton para agregar cosas al carrito -->
+                        <button class="agregar botton_crud" style="padding: 0px; margin: 15px; border-radius: 5%; background-color: #b9a38a; width: 200px;;">Agregar Articulo</button>
+                    </div>
+                        <thead id="encabezados">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                          <!-- Articulo UNO -->
+                          <tr id="color" >
+                            <th scope="row">1</th>
+                            <td><img class="img" src="./assets/img/crud-tienda/bar.JPG" alt=""></td>
+                            <td>Mesa de centro</td>
+                            <td >5000</td>
+                            <td >Mesa de centro rectangular de unicamente dos patas</td>
+                            <td scope="row">
+                              <form>
+                                <div class="form-group">
+                                  <label for="exampleInputNumber"></label>
+                                  <input type="number" class="form-control" id="exampleInputNumber" aria-describedby="emailHelp" placeholder="Ej. 5" style="width: 150px;">
+                                  <small id="emailHelp" class="form-text text-muted">Introduzca cantidad de elementos en inventario.</small>
+                                </div>
+                                <button type="submit" class="btn botton_crud" style="background-color: #b9a38a;">Confirmar</button>
+                              </form>
+                            </td>
+                            <td style="padding: 10px;"><button class="botton_crud" style="background-color: rgba(180, 153, 124, 0.55);">Eliminar</button></td>
+                        </tr>
+
+                        <!-- Articulo DOS -->
+                            <tr id="blanco">
+                                <th scope="row">2</th>
+                        
+                                <td><img class="img" src="./assets/img/crud-tienda/CasaConejo.jpg" alt=""></td>
+                                <td>Casa de conejo</td>
+                                <td >800</td>
+                                <td >Casa de madera de mascota. Para interiores y exteriores.</td>
+                                <td scope="row">
+                                  <form>
+                                    <div class="form-group">
+                                      <label for="exampleInputNumber"></label>
+                                      <input type="number" class="form-control" id="exampleInputNumber" aria-describedby="emailHelp" placeholder="Ej. 5" style="width: 150px;">
+                                      <small id="emailHelp" class="form-text text-muted">Introduzca cantidad de elementos en inventario.</small>
+                                    </div>
+                                    <button type="submit" class="btn botton_crud" style="background-color: #b9a38a;">Confirmar</button>
+                                  </form>
+                                </td>
+                                <td style="padding: 10px;"><button class="botton_crud" style="background-color: rgba(180, 153, 124, 0.55);">Eliminar</button></td>
+                            </tr>
+                            <tr id="color">
+                                <th scope="row">3</th>
+                                <td><img class="img" src="./assets/img/crud-tienda/cocina.jpeg" alt=""></td>
+                                <td>Cocina integral</td>
+                                <td >25000</td>
+                                <td >Elegante y moderna cocina integral con puertas de madera de cierre lento</td>
+                                <td scope="row">
+                                  <form>
+                                    <div class="form-group">
+                                      <label for="exampleInputNumber"></label>
+                                      <input type="number" class="form-control" id="exampleInputNumber" aria-describedby="emailHelp" placeholder="Ej. 5" style="width: 150px;">
+                                      <small id="emailHelp" class="form-text text-muted">Introduzca cantidad de elementos en inventario.</small>
+                                    </div>
+                                    <button type="submit" class="btn botton_crud" style="background-color: #b9a38a;">Confirmar</button>
+                                  </form>
+                                </td>
+                                <td style="padding: 10px;"><button class="botton_crud" style="background-color: rgba(180, 153, 124, 0.55);">Eliminar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- *********************************** MODAL ****************************************** -->
+    <section class="modal fuente-texto" style="overflow-y: scroll;" >
+        <div class="modal_container fuente-texto" >
+            <form action="" class="formulario fuente-texto"  style="background-color: #b9a38a;">
+                <h2 class="formulario_titulo text-dark">Agregar Artículo</h2>
+                <h4 class="titulo_imagenes">Subir fotos: </h4>
+                <input type="file" class="formulario_input fuente-texto">
+                <br>
+                <br>
+            
+                <label_formulario_label class="Zuli">Nombre del Producto</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Precio</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Descripcion 1</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Medidas</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Color</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Material</label_formulario_label>
+                <input type="text" class="formulario_input_dos">
+                <label_formulario_label class="Zuli">Descripcion 2</label_formulario_label>
+                <input type="text" class="formulario_input_dos">  
+            </form>
+            <input type="submit" class="formulario_sumbmit">
+            <a href="#"class="modal_close">Cerrar</a>
+        
+        </div>
+    </section>
+
+    <!-- ------------------------- PIE DE PÁGINA ------------------------- -->
+    <footer>
+        <img src="./assets/img/icons/ramaka-footer.jpeg" alt="logo" height="30px">
+        <div class="iconos-redes-sociales-container">
+                <a href="https://www.facebook.com/Carpinteria.Ramaka" class="redes-iconos"></a>
+                <a href="https://api.whatsapp.com/send?phone=%2B5215587861218&fbclid=IwAR0z4mxfR0pMQf4zzpV_uaoG-ajerFSOIDIco37bamY4zp7iikr-KMsS2Ic/" class="redes-iconos"></a>
+                <a href="https://www.instagram.com/carpinteria_ramaka/" class="redes-iconos"></a>
+                <a href="tel:600123456" class="redes-iconos"></a>
+            </div>
+
+        <div class="class"></div>
+        <ul class="pie-de-pagina-container">
+            <li class="item-menu">
+                <a href="./tyc.html#polPrivacy" style="color: #b9a38a;">Politica de privacidad</a>
+            </li>
+            <li class="item-menu">
+                <a href="./tyc.html" style="color: #b9a38a;">Terminos y condiciones</a>
+            </li>
+            <li class="item-menu">
+                <a href="./tyc.html#polCookies" style="color: #b9a38a;">Politica de cookies</a>
+            </li>
+        </ul>
+        <span class="copyright">&copy;2022, Ramaka. Todos los derechos reservados.</span>
+    </footer>
+
+    <script src="./assets/js/pagCrud.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"></script>
+  
+  <!-- ------------------------- JS CARRITO DE COMPRAS ------------------------- -->
+	
+	<script src="assets/js/dataTienda.js"></script>
+
+        <script src="assets/js/carrito.js"></script>
+
+        <script src="assets/js/tienda.js"></script>
+
+<!---------------------------------- TERMINAN ENLACES ----------------------------->
+
+
+</body>
+
+</html>
